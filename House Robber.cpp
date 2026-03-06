@@ -1,3 +1,7 @@
+// RECURRSION
+//TC: O(2 * 2^n)
+//SC: O(n) - auxiliary stack space
+
 class Solution {
 public:
     int houseRobber(vector<int>& money) {
