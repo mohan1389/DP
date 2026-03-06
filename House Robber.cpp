@@ -2,9 +2,10 @@
 //TC: O(2 * 2^n)
 //SC: O(n) - auxiliary stack space
 
-class Solution {
+class Solution { // this code gives TLE
 public:
     int houseRobber(vector<int>& money) {
+        if(nums.size() == 1) return nums[0];
         int ind = money.size()-1;
         return max(f1(money,ind),f2(money,ind-1));
     }
@@ -36,6 +37,7 @@ public:
 class Solution {
 public:
     int houseRobber(vector<int>& money) {
+        if(nums.size() == 1) return nums[0];
         int n = money.size();
         int ind = n-1;
         vector<int>dp1(n,-1);
