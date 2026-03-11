@@ -1,3 +1,6 @@
+//RECURRSION
+//TC: O(2^n)
+//SC: O(n)
 class Solution {
 public:
     bool canPartition(vector<int>& nums) {
