@@ -1,4 +1,31 @@
-// TABULATION
+// RECURRSION
+//TC: O(2^n)
+//SC: O(n) - auxilliary stack space
+class Solution{
+	public:
+	int perfectSum(vector<int>&arr, int K){
+        int n = arr.size();
+        return f(n-1,K,arr);
+	}
+
+    int f(int ind, int target, vector<int>&arr){
+        if(target == 0) return 1;
+        if(ind == 0){
+            if(target == 0 && arr[0] == 0) return 2;
+            if(target == 0 || target == arr[0]) return 1;
+            return 0;
+        }
+
+        int notPick = f(ind-1, target, arr);
+
+        int pick = 0;
+        if(arr[ind] <= target) pick = f(ind-1, target-arr[ind], arr);
+
+        return notPick + pick;
+    }
+};
+
+//MEMOIZATION
 //TC: O(n*K)
 //SC: O(n*K) + O(n) - auxilliary stack space + dp array size
 class Solution{
