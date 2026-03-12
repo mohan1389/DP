@@ -66,10 +66,9 @@ class Solution{
         for(int i=0; i<n; i++){
             dp[i][0] = 1;
         }
-        if(arr[0] == 0) dp[0][0] = 2;
-        
-        if(arr[0] != 0 && arr[0] <= K)
-            dp[0][arr[0]] = 1;
+        // if(arr[0] == 0) dp[0][0] = 2;
+        if(arr[0] <= K) dp[0][arr[0]] += 1;
+        // if(arr[0] != 0 && arr[0] <= K) dp[0][arr[0]] = 1;
 
         for(int ind=1; ind<n; ind++){
             for(int target = 0; target<= K; target++){
