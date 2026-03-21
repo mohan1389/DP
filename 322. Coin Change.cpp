@@ -61,3 +61,44 @@ public:
         return dp[ind][amount] = min(pick, notPick);
     }
 };
+
+
+//TABULATION 
+//TC: O(n * amount)
+//SC: O(n * amount)
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        int n = coins.size();
+        vector<vector<int>> dp(n, vector<int>(amount+1, -1));
+
+        //base cases
+        for(int ind=0; ind<n; ind++){
+            dp[ind][0] = 0;
+        }
+
+        for(int amt=1; amt<=amount; amt++){
+            if(amt % coins[0] == 0) dp[0][amt] = amt/coins[0];
+            else dp[0][amt] = 1e9;
+        }
+
+        //main logic
+        for(int ind=1; ind<n; ind++){
+            for(int amt=1; amt<=amount; amt++){
+
+                int notPick = 0 + dp[ind-1][amt];
+
+                int pick = 1e9;
+                if(coins[ind] <= amt){
+                    pick = 1 + dp[ind][amt-coins[ind]];
+                }
+
+                dp[ind][amt] = min(pick, notPick);
+
+            }
+        }
+
+        int ans = dp[n-1][amount];
+        return ans >= 1e9 ? -1: ans;
+    }
+};
