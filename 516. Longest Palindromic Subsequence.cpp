@@ -1,4 +1,7 @@
 //Approach: reverse the given string and find the LCS of two strings
+//RECURRSIVE
+//TC: O(2^(m+n))
+//SC: O(m+n) - auxiliary stack space
 class Solution {
 public:
     int longestPalindromeSubseq(string s) {
@@ -15,3 +18,8 @@ public:
         return max(f(i-1,j, s1, s2), f(i,j-1, s1, s2));
     }
 };
+
+
+
+
+
